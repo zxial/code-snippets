@@ -1,0 +1,78 @@
+/* mobile styles */
+@media all {
+html, body {
+    font: 48px/72px sans-serif;
+    background: #fff;
+    padding: 3px;
+    color: #222;
+    margin: 0;
+
+}
+#sidebar, #footer {
+    display: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    line-height: 1.1;
+    color: #343434;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+}
+
+section{
+    width:96%;
+    padding: auto;
+    margin: auto;
+    display:block;
+    line-height:1.5;
+    white-space: pre-wrap;
+}
+ul{
+    line-height: 1.1;
+    white-space: normal;
+}
+
+.postdate{
+    padding-left: 36px;
+    color:#343434;
+}
+
+.postauthor{
+    color:#607FA6;
+    font-weight: bold;
+}
+
+img {
+    width: auto;
+    height: auto;
+    /*max-width: 250px;*/
+    display:block;
+    max-width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+.center {
+    width: 100% !important;
+    text-align: center;
+}
+
+a:link, a:visited {
+    text-decoration: underline;
+    color: #0000CC;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+    color: #660066;
+}
+
+}
+
+/* iPhone-specific styles */
+@media only screen and (max-device-width: 480px) { 
+html {
+    -webkit-text-size-adjust: none;
+}
+}
