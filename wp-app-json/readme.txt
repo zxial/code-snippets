@@ -39,6 +39,8 @@ Web: http://zxial.me
 
 
 == Changelog ==
+= 1.0.1 =
+* fix bug of issue:2 on github, https://github.com/zxial/code-snippets/issues/2
 
 = 1.0 =
 * Initial version
