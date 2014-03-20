@@ -20,7 +20,7 @@ function wp_app_json_redirect($wp){
         global $appjsonObj;
         if(!isset($appjsonObj)){
             $appjsonObj = new wp_appjson();
-            $appjsonObj->route();
+            $appjsonObj->route($secrets);
             exit;
         }
     }
@@ -31,13 +31,13 @@ class wp_appjson {
     private $response= '';
     private $paged = 1;
 
-    public function route(){
+    public function route($secrets){
 
         if(isset($_GET['debug'])){
             $this->response = 'RESPONSE';                                
              //$this->responseMsg();
         }else{
-            if(isset($_GET["appjson"])){
+            if(isset($_GET[$secrets])){
                 if (isset($_GET["gl"])) {
                     // Get List 
                     $this->keyword = strtolower(trim($_GET['k']));
