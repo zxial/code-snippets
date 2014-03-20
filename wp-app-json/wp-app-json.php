@@ -3,7 +3,7 @@
  * Plugin Name: WP APP JSON
  * Plugin URI: http://zxial.me/projects/wp_app_json/
  * Description: Provide JSON data to mobile APPs. Here's the scenarios that you could use this plugin: you want to develop a mobile app or app on mac, and the app is to show the list of your blogs(in category, tag, or keywords), after the app user click one item in the blog list, you would like to show him the detail page of the item, but the logos/banners/sidebar of blog is suitable only for a desktop other than a mobile device or you want to do something different. In the case here, WP APP JSON maybe could help.  
- * Version: 1.0
+ * Version: 1.0.1
  * Author: Zxial
  * Author URI: http://zxial.me/
  * License: GPLv2 or later
