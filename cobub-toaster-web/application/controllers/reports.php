@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class reports extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -19,9 +19,27 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('profile');
+		$this->load->view('user_report_allapps');
 	}
+	
+	public function allapp()
+	{
+		$this->load->view('user_report_allapps');
+	}
+	public function app()
+	{
+		$this->load->view('user_report_app');
+	}
+	public function timephase()
+	{
+		$this->load->view('user_report_timephase');
+	}
+	public function tasks()
+	{
+		$this->load->view('user_report_tasks');
+	}
+	
+	
+	
+	
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
