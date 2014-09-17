@@ -95,7 +95,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="<?php echo $this->config->item('base_url');?>/index.php/sys"><i class="fa fa-gear"></i>系统配置</a>
+                            <a href="<?php echo $this->config->item('base_url');?>/index.php/sys"><i class="fa fa-gear"></i> PNS配置</a>
                         </li>
                     </ul>
                     <!-- /#side-menu -->
@@ -107,7 +107,7 @@
         <div id="page-wrapper">
 			<div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">应用列表</h1>
+                    <h1 class="page-header">PNS配置</h1>
                 </div>
                 
                 <!-- /.col-lg-12 -->
@@ -117,41 +117,34 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            您当前共有 <?php echo $applist->num_rows();?> 个应用
+                            请在此处配置PNS服务器
                         </div>
-                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>APP名称 </th>
-                                            <th>操作系统</th>
-                                            <th>描述</th>
-                                            <th>APPID</th>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" method="POST" action="<?php echo $this->config->item('base_url');?>/index.php/sys">
+                                        <div class="form-group">
+                                            <label>PNS服务器地址</label>
+                                            <input class="form-control" name="server_add" placeholder="输入PNS的服务器地址，域名或者IP" value="<?php echo $pns->server_add;?>">
+                                            <br/>
+                                            <label>PNS服务器端口</label>
+                                            <input class="form-control" name="server_port" placeholder="PNS的服务器的HTTP服务端口" value="<?php echo $pns->server_port;?>">
+                                            <br/>
+                                            <button type="submit" class="btn btn-primary btn-lg">保存</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>当前PNS服务器状态：</label>
+                                            <p class="form-control-static">正常或错误<?php echo $status;?></p>
+                                            <label>当前PNS服务器版本：</label>
+                                            <p class="form-control-static">正常或错误</p>
+                                            
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-	                                    <?php 
-	                                    foreach ($applist->result() as $row)
-	                                    {
-	                                    	echo '<tr class="gradeX">';
-	                                    	echo '<td>'.$row->appname.'</td>';
-	                                    	echo '<td>'.$row->ostype.'</td>';
-	                                    	echo '<td>'.$row->description.'</td>';
-	                                    	echo '<td>'.$row->appkey.'</td>';
-	                                    	echo '</tr>';
-	                                    }
-	                                    
-	                                    ?>
-                                        
-
-                                    </tbody>
-                                </table>
                             </div>
-                            <!-- /.table-responsive -->
-
+                            <!-- /.row (nested) -->
                         </div>
                         <!-- /.panel-body -->
                     </div>

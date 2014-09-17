@@ -106,7 +106,58 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Push</h1>
+                    <h1 class="page-header">新建推送任务</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            请选择推送方式
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>推送方式</label>
+                                            <select class="form-control">
+                                                <option>单点推送</option>
+                                                <option>TAG群组推送</option>
+                                                <option>所有用户推送</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>图标文件</label>
+                                            <input type="file">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>推送标题</label>
+                                            <input class="form-control" placeholder="输入标题">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>推送文字</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-lg">开始推送</button>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                    <h1>图例</h1>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
