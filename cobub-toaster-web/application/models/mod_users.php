@@ -1,17 +1,18 @@
 <?php
 /**
- * Cobub Razor
+ * Cobub Toaster Web Console 
  *
- * An open source analytics for mobile applications
+ * Cobub Toaster is an open source push solution for mobile apps
  *
- * @package		Cobub Razor
- * @author		WBTECH Dev Team
- * @copyright	Copyright (c) 2011 - 2012, NanJing Western Bridge Co.,Ltd.
- * @license		http://www.cobub.com/products/cobub-razor/license
- * @link		http://www.cobub.com/products/cobub-razor/
- * @since		Version 1.0
- * @filesource
+ * @package		Cobub Toaster Web Console
+ * @version		0.1
+ * @author		Zxial
+ * @license		GPL V3
+ * @link		http://zxial.me/projects/cobub-toaster-web/
+ * @since		Version 0.1
+ * @filesource	user model
  */
+
 class mod_users extends CI_Model {
 	function mod_users(){
 		parent::__construct ();

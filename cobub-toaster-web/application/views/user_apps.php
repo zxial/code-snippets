@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+    <title>Cobub Toaster Web Console version: <?php echo $this->config->item('console_version');?></title>
 
     <!-- Core CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,7 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/sb-admin.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo $this->config->item('base_url');?>/assets/img/favicon.ico">
 
 </head>
 
@@ -95,7 +96,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="<?php echo $this->config->item('base_url');?>/index.php/sys"><i class="fa fa-gear"></i>系统配置</a>
+                            <a href="<?php echo $this->config->item('base_url');?>/index.php/sys"><i class="fa fa-gear"></i> 系统配置</a>
                         </li>
                     </ul>
                     <!-- /#side-menu -->

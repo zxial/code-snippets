@@ -6,18 +6,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+    <title>Cobub Toaster Web Console version: <?php echo $this->config->item('console_version');?></title>
 
     <!-- Core CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $this->config->item('base_url');?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Page-Level Plugin CSS - Blank -->
+    <!-- Page-Level Plugin CSS - Morris -->
+    <link href="<?php echo $this->config->item('base_url');?>/assets/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/sb-admin.css" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo $this->config->item('base_url');?>/assets/img/favicon.ico">
-
+    <script src="<?php echo $this->config->item('base_url');?>/assets/js/jquery-1.10.2.js"></script>
+    <script src="<?php echo $this->config->item('base_url');?>/assets/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="<?php echo $this->config->item('base_url');?>/assets/js/plugins/morris/morris.js"></script>
+     
 </head>
 
 <body>
@@ -95,6 +100,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="<?php echo $this->config->item('base_url');?>/index.php/sys"><i class="fa fa-gear"></i> PNS配置</a>
+                        </li>                        
                     </ul>
                     <!-- /#side-menu -->
                 </div>
@@ -106,9 +114,63 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Report Timephase</h1>
+                    <h1 class="page-header">单应用时间段报表 - <?php echo $cappname;?></h1>
                 </div>
                 <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="morris-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <script type="text/javascript">
+                $(function() {
+
+                    Morris.Line({
+                        element: 'morris-chart',
+                        data: <?php echo json_encode($app_report_data->result());?>,
+                        xkey: 'rtime',
+                        ykeys: ['onlinev', 'allv'],
+                        labels: ['在线人数', '总人数'],
+                        resize: true
+                    });
+
+                });
+
+                </script>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            点击链接选择其他应用的报表
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div>
+ 	                        <?php 
+	                        	foreach ($apps->result() as $row)
+	                            {
+	                            	if($appid != $row->appkey){
+	                                	echo '<a type="button" class="btn btn-info" href="?appid='.$row->appkey.'">';
+	                                    echo $row->appname;
+	                                    echo '</a>   ';
+	                                }
+	                            }
+	                                    
+	                        ?>
+                            
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
             </div>
             <!-- /.row -->
         </div>
@@ -118,17 +180,18 @@
     <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
-    <script src="<?php echo $this->config->item('base_url');?>/assets/js/jquery-1.10.2.js"></script>
     <script src="<?php echo $this->config->item('base_url');?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo $this->config->item('base_url');?>/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Blank -->
-
+   
     <!-- SB Admin Scripts - Include with every page -->
     <script src="<?php echo $this->config->item('base_url');?>/assets/js/sb-admin.js"></script>
 
     <!-- Page-Level Demo Scripts - Blank - Use for reference -->
-
+    
+    <!-- script src="<?php echo $this->config->item('base_url');?>/assets/js/demo/morris-demo.js"></script-->
+    
 </body>
 
 </html>

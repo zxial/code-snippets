@@ -15,6 +15,7 @@
 |
 */
 $config['base_url']	= 'http://localhost/toaster';
+$config['console_version']	= '0.1';
 
 /*
 |--------------------------------------------------------------------------

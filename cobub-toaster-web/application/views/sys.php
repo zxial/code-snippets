@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+    <title>Cobub Toaster Web Console version: <?php echo $this->config->item('console_version');?></title>
 
     <!-- Core CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,7 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/sb-admin.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo $this->config->item('base_url');?>/assets/img/favicon.ico">
 
 </head>
 
@@ -121,7 +122,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <form role="form" method="POST" action="<?php echo $this->config->item('base_url');?>/index.php/sys">
                                         <div class="form-group">
                                             <label>PNS服务器地址</label>
@@ -134,10 +135,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label>当前PNS服务器状态：</label>
-                                            <p class="form-control-static">正常或错误<?php echo $status;?></p>
+                                            <p class="form-control-static">&nbsp;&nbsp;&nbsp;<?php echo $serverstatus['json_return']->status;?></p><br/>
                                             <label>当前PNS服务器版本：</label>
-                                            <p class="form-control-static">正常或错误</p>
-                                            
+                                            <p class="form-control-static">&nbsp;&nbsp;&nbsp;<?php echo $serverstatus['json_return']->version;?></p> 
                                         </div>
                                     </form>
                                 </div>

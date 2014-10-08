@@ -1,25 +1,25 @@
 <?php
 /**
- * Cobub Razor
+ * Cobub Toaster Web Console 
  *
- * An open source analytics for mobile applications
+ * Cobub Toaster is an open source push solution for mobile apps
  *
- * @package		Cobub Razor
- * @author		WBTECH Dev Team
- * @copyright	Copyright (c) 2011 - 2012, NanJing Western Bridge Co.,Ltd.
- * @license		http://www.cobub.com/products/cobub-razor/license
- * @link		http://www.cobub.com/products/cobub-razor/
- * @since		Version 1.0
- * @filesource
+ * @package		Cobub Toaster Web Console
+ * @version		0.1
+ * @author		Zxial
+ * @license		GPL V3
+ * @link		http://zxial.me/projects/cobub-toaster-web/
+ * @since		Version 0.1
+ * @filesource	connection model for pns of Cobub Toaster
  */
+
+
 class mod_pns extends CI_Model {
 	private $server;
 	
 	function mod_pns(){
 		parent::__construct ();
 		$this->load->database ();
-//		$this->load->helper ( 'array' );
-//		$this->load->model ( 'service/utility', 'utility' );
 		$server=$this->get_pns();
 	}
 	
@@ -37,17 +37,34 @@ class mod_pns extends CI_Model {
 	function get_pns(){
 		$this->db->from ( 'pns' );
 		$this->db->where ( 'id', 1 );
-		return $this->db->get()->row();		
+		$res = $this->db->get()->row();
+		$this->server['server_add'] = $res->server_add;
+		$this->server['server_port'] = $res->server_port;
+		return $res;
 	}
 	
-	function check_pns(){
-		$method = 'serververion';
+	//serverversion
+	function pns_serverversion(){
+		$method = 'serverversion';
 		return $this->curl_wrap($method, '');
 	}
+	
+	//app-size
+	function pns_app_size($appid,$online){
+		$method = 'app-size';
+		$data = 'online='.$online.'&'.
+            'appid='.$appid.'';
+		return $this->curl_wrap($method, $data);
+	}
+	
+	
+	//wrapper for curl
+	//for the HTTP interface, refer to http://dev.cobub.com/docs/cobub-toaster/
 	
 	function curl_wrap($method, $postdata){
 
 		$url =  'http://'.$this->server['server_add'].':'.$this->server['server_port'].'/'.$method;
+		//echo $url;
 		$curl = curl_init ( $url );
 		curl_setopt ( $curl, CURLOPT_HEADER, 0 );
 		$header = array ();
@@ -65,9 +82,18 @@ class mod_pns extends CI_Model {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt ( $curl, CURLOPT_POSTFIELDS, $postdata );
 		
-		$result = curl_exec ( $curl );
+		$http_return = curl_exec ( $curl );
+		
+		$result = array(
+				'http_code' => curl_getinfo($curl,CURLINFO_HTTP_CODE),
+				'json_return' => json_decode($http_return),
+				'http_raw' => $http_return,
+				'curl_errno' => curl_errno($curl)
+				);
+		
 		curl_close ( $curl );
 		return $result;
+		
 	}
 }
 

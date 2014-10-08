@@ -14,6 +14,7 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?php echo $this->config->item('base_url');?>/assets/css/sb-admin.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo $this->config->item('base_url');?>/assets/img/favicon.ico">
 
 </head>
 

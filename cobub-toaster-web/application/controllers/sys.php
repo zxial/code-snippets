@@ -1,22 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Cobub Toaster Web Console
+ *
+ * Cobub Toaster is an open source push solution for mobile apps
+ *
+ * @package		Cobub Toaster Web Console
+ * @author		Zxial
+ * @copyright	Zxial
+ * @license		GPL V3
+ * @link		http://zxial.me/projects/cobub-toaster-web/
+ * @since		Version 0.1
+ * @filesource	controller of system configuration
+ */
+
 class sys extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function sys(){
 		parent::__construct();
 		$this->load->model ( 'mod_pns' );
@@ -41,8 +40,20 @@ class sys extends CI_Controller {
 		
 		$pns = $this->mod_pns->get_pns();
 		$data['pns'] = $pns;
-		$status = $this->mod_pns->check_pns();
-		$data['status'] = $status;
+		$serverstatus = $this->mod_pns->pns_serverversion();
+		if($serverstatus['curl_errno'] !=0){
+			$serverstatus['json_return'] = json_decode(json_encode(array('status'=>'无法连接PNS！请检查服务器地址和端口是否正确！curl错误代码'.$serverstatus['curl_errno'],'version'=>'未知')));
+			//echo 'Error! 407';
+			//json_decode($json)
+		}else{
+			if($serverstatus['json_return']->status == 200){
+				$serverstatus['json_return']->status = '系统正常';
+			}else{
+				$serverstatus['json_return']->status = '系统错误，错误代码：'. $serverstatus['json_return']->status;
+			}
+		}
+		
+		$data['serverstatus'] = $serverstatus;
 		$this->load->view('sys',$data);
 		
 	}

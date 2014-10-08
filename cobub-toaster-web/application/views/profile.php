@@ -95,6 +95,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="<?php echo $this->config->item('base_url');?>/index.php/sys"><i class="fa fa-gear"></i> PNS配置</a>
+                        </li>
                     </ul>
                     <!-- /#side-menu -->
                 </div>

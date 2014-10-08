@@ -1,27 +1,22 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * Cobub Toaster Web Console
+ *
+ * Cobub Toaster is an open source push solution for mobile apps
+ *
+ * @package		Cobub Toaster Web Console
+ * @author		Zxial
+ * @copyright	Zxial
+ * @license		GPL V3
+ * @link		http://zxial.me/projects/cobub-toaster-web/
+ * @since		Version 0.1
+ * @filesource	controller of user profile
+ */
 class profile extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->view('profile');
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
